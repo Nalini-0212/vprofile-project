@@ -4,6 +4,8 @@ RUN cd vprofile-project && git checkout containers && mvn clean install
 
 
 FROM tomcat:10-jdk21
+LABEL "Project"="Vprofile"
+LABEL "Author"="Nalini"
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=BUILD vprofile-project/target/vprofile.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
